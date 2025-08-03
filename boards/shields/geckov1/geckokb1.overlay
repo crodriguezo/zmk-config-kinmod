@@ -1,0 +1,29 @@
+/ {
+    chosen {
+        zmk,kscan = &default_kscan
+    };
+    default_kscan: kscan {
+        compatible = "zmk,kscan-matrix-mux";
+        col-gpios = <&gpio0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,   // COL0 - P0.29
+                    <&gpio0 2  (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,   // COL1 - P0.02
+                    <&gpio1 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,   // COL2 - P1.15
+                    <&gpio1 13 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,   // COL3 - P1.13
+                    <&gpio1 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,   // COL4 - P1.11
+                    <&gpio0 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,   // COL5 - P0.10
+                    <&gpio0 9  (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;   // COL6 - P0.09
+
+        mux-gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH)>,    // S0 - P0.11
+                    <&gpio1 0  (GPIO_ACTIVE_HIGH)>,    // S1 - P1.00
+                    <&gpio0 24 (GPIO_ACTIVE_HIGH)>,    // S2 - P0.24
+                    <&gpio0 22 (GPIO_ACTIVE_HIGH)>;    // S3 - P0.22
+
+        mux-sel-gpio = <&gpio0 20 (GPIO_ACTIVE_HIGH)>; // SIG - P0.20
+
+        debounce-period-ms = <5>;
+        size = <7 15>; // 7 columns, 15 rows (muxed)
+
+        // If your logical matrix row order is not C0, C1, C2, ..., C14, add row-pins as below:
+        row-pins = <0 1 15 3 4 5 6 7 8 9 10 11 12 13 14>; 
+        // (This line is only needed if your physical row order ≠ C0–C14. Adjust as needed.)
+    };
+};
