@@ -1,0 +1,6 @@
+if SHIELD_GECKO
+
+config ZMK_KEYBOARD_NAME
+    default "gecko"
+
+endif

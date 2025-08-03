@@ -1,6 +1,0 @@
-if SHIELD_GECKOKB1
-
-config ZMK_KEYBOARD_NAME
-    default "geckokb1"
-
-endif
