@@ -24,11 +24,5 @@
                 &kp F3         &none          &kp QUOT      &none          &none
             >;
         };
-
-        bt_layer{
-            bindings = <
-
-            >;
-        }
     };
 };
